@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101014">
+<title>Yoga Funduraction Shop — Digital Music Store</title>
+<style>
+:root{--bg:#101014;--panel:#191820;--panel2:#211d2b;--line:#302b3a;--purple:#965cf4;--purple2:#b58aff;--text:#f6f3fb;--muted:#aaa4b5;--green:#70d6a1}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:20;background:#101014ed;backdrop-filter:blur(14px);border-bottom:1px solid #292532}
+.nav{height:72px;display:flex;align-items:center;gap:24px}
+.brand{font-weight:900;letter-spacing:.04em;font-size:19px;white-space:nowrap}
+.brand span{color:var(--purple2)}
+.navlinks{display:flex;gap:22px;margin-left:auto;color:#c7c1d0;font-size:13px}
+.navlinks a:hover{color:white}
+.navright{display:flex;gap:10px;align-items:center}
+.iconbtn,.menu-btn{border:1px solid var(--line);background:var(--panel);color:white;border-radius:12px;padding:10px 12px}
+.menu-btn{display:none}
+.cart-count{display:inline-grid;place-items:center;background:var(--purple);border-radius:99px;min-width:19px;height:19px;font-size:11px;margin-left:4px}
+.hero{padding:66px 0 44px}
+.hero-box{position:relative;overflow:hidden;border:1px solid #3b304c;border-radius:26px;padding:clamp(28px,6vw,66px);background:radial-gradient(circle at 83% 30%,#56358a77,transparent 34%),linear-gradient(120deg,#20192b,#15131c 60%,#21172d)}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--purple2);font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(38px,7vw,70px);line-height:1.02;letter-spacing:-.055em;margin:16px 0;max-width:700px}
+.hero p{max-width:560px;color:#c2bbce;font-size:16px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:750;background:var(--purple);color:white;box-shadow:0 8px 24px #965cf433}
+.btn:hover{filter:brightness(1.1)}
+.btn.secondary{background:#ffffff0b;border:1px solid #ffffff26;box-shadow:none}
+.hero-note{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px;color:#c5bdce;font-size:12px}
+.hero-note span:before{content:"✓";color:var(--green);font-weight:900;margin-right:7px}
+.section{padding:26px 0 48px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}
+.kicker{color:var(--purple2);font-size:11px;letter-spacing:.16em;font-weight:800;text-transform:uppercase}
+h2{font-size:clamp(24px,4vw,34px);margin:5px 0 0;letter-spacing:-.03em}
+.sub{color:var(--muted);font-size:13px;margin:5px 0 0}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 22px}
+.search{flex:1;min-width:190px;position:relative}
+.search input{width:100%;background:var(--panel);border:1px solid var(--line);color:white;border-radius:12px;padding:12px 14px;outline:none}
+.search input:focus,select:focus{border-color:var(--purple)}
+select{background:var(--panel);border:1px solid var(--line);color:#eee;border-radius:12px;padding:12px;min-width:150px;outline:none}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.chip{background:var(--panel);border:1px solid var(--line);color:#c8c1d2;border-radius:99px;padding:8px 13px;font-size:12px}
+.chip.active{background:#382653;border-color:#8753d3;color:white}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:linear-gradient(180deg,#1c1a23,#17161d);border:1px solid #302c38;border-radius:18px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:#68469a}
+.cover{height:168px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 70% 30%,#8b55d855,transparent 34%),linear-gradient(135deg,#292039,#15141c)}
+.cover:before,.cover:after{content:"";position:absolute;border:1px solid #b58aff44;border-radius:50%;width:180px;height:180px}
+.cover:after{width:120px;height:120px}
+.cover .symbol{font-size:48px;z-index:1;filter:drop-shadow(0 8px 18px #0008)}
+.tag{position:absolute;top:12px;left:12px;background:#100e16cc;border:1px solid #ffffff20;border-radius:99px;padding:5px 9px;font-size:10px;color:#e8ddfa;z-index:2}
+.card-body{padding:15px}
+.card h3{margin:0 0 5px;font-size:16px}
+.meta{color:var(--muted);font-size:11px}
+.desc{color:#bdb6c8;font-size:12px;min-height:38px;margin:10px 0}
+.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
+.price{font-weight:850;font-size:17px}
+.smallbtn{background:#342348;border:1px solid #68469a;color:white;padding:8px 11px;border-radius:10px;font-size:11px;font-weight:750}
+.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cat{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.cat b{display:block;margin:8px 0 3px}
+.cat small{color:var(--muted)}
+.cat .ico{font-size:24px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.info{padding:20px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}
+.info b{display:block;margin:9px 0 5px}
+.info p{color:var(--muted);font-size:12px;margin:0}
+footer{border-top:1px solid #2b2733;padding:30px 0 42px;color:var(--muted);font-size:12px}
+.footerrow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal-backdrop{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:18px;z-index:50}
+.modal-backdrop.show{display:grid}
+.modal{width:min(520px,100%);background:#1a1821;border:1px solid #494052;border-radius:20px;padding:22px;box-shadow:0 25px 80px #0009}
+.modal-top{display:flex;justify-content:space-between;gap:15px}
+.modal h3{font-size:23px;margin:4px 0}
+.close{background:transparent;border:0;color:white;font-size:24px}
+.modal p{color:#c1bacb;font-size:13px}
+.modal .price{font-size:22px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#292333;border:1px solid #7551a2;color:white;padding:11px 16px;border-radius:12px;z-index:80;transition:.25s;font-size:13px}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.cart-panel{position:fixed;right:0;top:0;height:100%;width:min(390px,100%);background:#17151d;border-left:1px solid var(--line);z-index:60;padding:22px;transform:translateX(105%);transition:.25s;overflow:auto}
+.cart-panel.open{transform:translateX(0)}
+.cart-head{display:flex;justify-content:space-between;align-items:center}
+.cart-item{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;font-size:13px}
+.cart-empty{color:var(--muted);font-size:13px;padding:30px 0}
+.notice{background:#241e30;border:1px solid #55406e;padding:13px 15px;border-radius:13px;color:#d5c9e6;font-size:12px;margin-top:18px}
+#adminBackdrop{position:fixed;inset:0;background:#08070bd9;z-index:90;display:none;overflow:auto;padding:18px}
+#adminBackdrop.show{display:block}
+.admin-shell{width:min(1050px,100%);margin:20px auto;background:#17151e;border:1px solid #493b5b;border-radius:20px;padding:22px;box-shadow:0 25px 90px #000b}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.admin-box{background:#201d28;border:1px solid #393141;border-radius:15px;padding:16px;min-width:0}
+.admin-box h3{margin:0 0 12px;font-size:16px}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin-form label{display:grid;gap:5px;color:#c9c1d2;font-size:12px}
+.admin-form label.full{grid-column:1/-1}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;min-width:0;background:#121117;border:1px solid #403749;color:#fff;border-radius:9px;padding:10px;font:inherit}
+.admin-form textarea{min-height:72px;resize:vertical}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.admin-list{display:grid;gap:8px;margin-top:12px;max-height:250px;overflow:auto}
+.admin-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px;background:#15131b;border:1px solid #342e3d;border-radius:10px;font-size:12px}
+.admin-row span{min-width:0;overflow-wrap:anywhere}
+.admin-row button{background:#342348;border:1px solid #68469a;color:#fff;border-radius:8px;padding:6px 9px;font-size:11px}
+.admin-hint{color:#aaa1b3;font-size:11px;margin:9px 0 0;line-height:1.5}
+.preview-media{max-width:100%;max-height:110px;border-radius:8px;margin-top:8px}
+@media(max-width:800px){.admin-grid{grid-template-columns:1fr}.admin-shell{padding:15px;margin:0 auto}}
+@media(max-width:520px){#adminBackdrop{padding:8px}.admin-form{grid-template-columns:1fr}.admin-form label.full{grid-column:auto}.admin-head h2{font-size:21px}.navright{gap:5px}.iconbtn{padding:8px 9px;font-size:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.menu-btn{display:block}.nav{gap:10px}.navright{margin-left:auto}}
+@media(max-width:520px){.wrap{width:min(100% - 26px,1160px)}.nav{height:62px}.brand{font-size:16px}.hero{padding:28px 0 25px}.hero-box{border-radius:19px;padding:28px 22px}.hero p{font-size:14px}.grid{grid-template-columns:1fr 1fr;gap:10px}.cover{height:118px}.cover .symbol{font-size:36px}.card-body{padding:11px}.card h3{font-size:13px}.desc{font-size:11px;min-height:48px}.price{font-size:14px}.smallbtn{padding:7px 8px;font-size:10px}.section{padding:20px 0 34px}.categories{gap:9px}.cat{padding:14px}.info-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}select{flex:1;min-width:130px}}
+</style>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBbZ6nIb6hSmKCCzpLPBijFnSSNhQjo5tA",
+  authDomain: "yoga-funduraction-shop.firebaseapp.com",
+  projectId: "yoga-funduraction-shop",
+  storageBucket: "yoga-funduraction-shop.firebasestorage.app",
+  messagingSenderId: "556357854730",
+  appId: "1:556357854730:web:540c2812d6bce4f960e1f3"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+window.yfsAuth = { auth, provider, signInWithPopup, signOut, onAuthStateChanged };
+</script>
+
+
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">YOGA <span>FUNDURACTION</span></a>
+    <nav class="navlinks"><a href="#home">Home</a><a href="#products">Products</a><a href="#categories">Categories</a><a href="#about">About</a></nav>
+    <div class="navright">
+      <button class="iconbtn" id="adminOpen" aria-label="Buka dashboard admin">Admin</button>
+      <button class="iconbtn" id="cartOpen" aria-label="Buka keranjang">Cart <span class="cart-count" id="cartCount">0</span></button>
+      <button class="menu-btn" onclick="document.querySelector('#products').scrollIntoView()">☰</button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="hero" id="home"><div class="wrap"><div class="hero-box">
+  <div class="eyebrow">Digital music production store</div>
+  <h1>CREATE YOUR<br><span style="color:#bd98ff">OWN SOUND.</span></h1>
+  <p>Temukan project, sample, drum kit, preset, dan tools produksi musik untuk FL Studio PC maupun FL Studio Mobile.</p>
+  <div class="actions"><a class="btn" href="#products">Jelajahi Produk</a><a class="btn secondary" href="#categories">Lihat Kategori</a></div>
+  <div class="hero-note"><span>Produk digital</span><span>PC & Mobile</span><span>Preview sebelum beli</span></div>
+</div></div></section>
+
+<section class="section" id="categories"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">Browse store</div><h2>Jelajahi kategori</h2><p class="sub">Pilih kebutuhan produksi musikmu.</p></div></div>
+  <div class="categories">
+    <a class="cat" href="#products" data-cat="Project"><div class="ico">🎹</div><b>Projects</b><small>FLP & FLM projects</small></a>
+    <a class="cat" href="#products" data-cat="Sample Pack"><div class="ico">🥁</div><b>Sample Packs</b><small>Drums, FX & sounds</small></a>
+    <a class="cat" href="#products" data-cat="Preset"><div class="ico">🎛️</div><b>Presets</b><small>Sounds & instruments</small></a>
+    <a class="cat" href="#products" data-cat="MIDI"><div class="ico">🎼</div><b>MIDI Files</b><small>Melody & chords</small></a>
+  </div>
+</div></section>
+
+<section class="section" id="products"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">The collection</div><h2>Produk pilihan</h2><p class="sub">Cari produk berdasarkan platform, kategori, genre, dan style.</p></div></div>
+  <div class="toolbar">
+    <div class="search"><input id="search" type="search" placeholder="Cari project, sample, preset..." aria-label="Cari produk"></div>
+    <select id="platform" aria-label="Filter platform"><option value="all">Semua platform</option><option value="PC">FL Studio PC</option><option value="Mobile">FL Studio Mobile</option><option value="Universal">Universal</option></select>
+    <select id="category" aria-label="Filter kategori"><option value="all">Semua kategori</option><option>Project</option><option>Sample Pack</option><option>Drum Kit</option><option>Preset</option><option>MIDI</option><option>Sound FX</option></select>
+    <select id="genre" aria-label="Filter genre"><option value="all">Semua genre</option><option value="Party">Party</option><option value="Trap Battle">Trap Battle</option></select>
+    <select id="style" aria-label="Filter style"><option value="all">Semua style</option></select>
+    <select id="sort" aria-label="Urutkan produk"><option value="featured">Pilihan</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option></select>
+  </div>
+  <div class="chips"><button class="chip active" data-platform="all">Semua</button><button class="chip" data-platform="PC">PC</button><button class="chip" data-platform="Mobile">Mobile</button><button class="chip" data-platform="Universal">Universal</button></div>
+  <div class="grid" id="productGrid"></div>
+</div></section>
+
+<section class="section" id="about"><div class="wrap">
+  <div class="section-head"><div><div class="kicker">Why YFS</div><h2>Belanja sound lebih mudah</h2><p class="sub">Informasi produk jelas sebelum kamu membeli.</p></div></div>
+  <div class="info-grid">
+    <div class="info"><div class="ico">🎧</div><b>Preview audio</b><p>Dengarkan contoh suara sebelum memutuskan membeli. Audio demo asli perlu ditambahkan oleh admin.</p></div>
+    <div class="info"><div class="ico">📱</div><b>PC & Mobile</b><p>Setiap produk akan diberi label kompatibilitas dan versi aplikasi yang dibutuhkan.</p></div>
+    <div class="info"><div class="ico">🔒</div><b>Download aman</b><p>Versi produksi akan menggunakan link download privat setelah pembayaran terverifikasi.</p></div>
+  </div>
+  <div class="notice"><b>Mode demo:</b> katalog dan dashboard admin berjalan di browser. Data katalog tersimpan lokal di browser perangkat ini; checkout dan pembayaran belum aktif.</div>
+</div></section>
+</main>
+<footer><div class="wrap footerrow"><div><b style="color:white">YOGA FUNDURACTION SHOP</b><br>Digital tools for music producers.</div><div>© <span id="year"></span> Yoga Funduraction Shop. All rights reserved.</div></div></footer>
+
+<div id="adminBackdrop" aria-hidden="true">
+ <div class="admin-shell">
+  <div class="admin-head"><div><div class="kicker">STORE CONTROL</div><h2>Dashboard Admin</h2><p class="sub">Kelola genre, style, dan katalog produk.</p></div><button class="close" id="adminClose" aria-label="Tutup dashboard">×</button></div>
+  <div class="notice"><b>Mode lokal:</b> data disimpan di browser perangkat ini menggunakan localStorage. Ini bukan database online, belum ada login/admin authentication, dan data tidak otomatis tersinkron ke perangkat lain. Backup JSON secara berkala.</div>
+  <div class="admin-grid" style="margin-top:16px">
+   <section class="admin-box">
+    <h3>1. Genre & Style</h3>
+    <form id="genreForm" class="admin-form">
+     <label class="full">Nama genre<input id="genreName" required placeholder="Contoh: Party"></label>
+     <label class="full">Styles (pisahkan dengan koma)<input id="genreStylesInput" placeholder="Bongobarbar, Njengat, Velocity"></label>
+     <div class="admin-actions full"><button class="btn" type="submit">Simpan genre</button><button class="btn secondary" type="button" id="genreCancel">Reset</button></div>
+    </form>
+    <div id="genreAdminList" class="admin-list"></div>
+    <p class="admin-hint">Edit untuk mengubah nama genre dan daftar style. Hapus genre akan mengosongkan genre/style pada produk yang menggunakannya.</p>
+   </section>
+   <section class="admin-box">
+    <h3>2. Tambah / Edit Project & Produk</h3>
+    <form id="productForm" class="admin-form">
+     <input type="hidden" id="editProductId">
+     <label class="full">Nama produk<input id="pName" required placeholder="Nama project / produk"></label>
+     <label>Platform<select id="pPlatform"><option value="PC">FL Studio PC</option><option value="Mobile">FL Studio Mobile</option><option value="Universal">Universal</option></select></label>
+     <label>Kategori<select id="pCategory"><option>Project</option><option>Sample Pack</option><option>Drum Kit</option><option>Preset</option><option>MIDI</option><option>Sound FX</option></select></label>
+     <label>Genre<select id="pGenre"><option value="">Tanpa genre</option></select></label>
+     <label>Style<select id="pStyle"><option value="">Tanpa style</option></select></label>
+     <label>Format file<input id="pFormat" required placeholder=".FLP / .FLM / .ZIP / .WAV"></label>
+     <label>Harga minimum (Rp)<input id="pMin" type="number" min="0" required placeholder="150000"></label>
+     <label>Harga maksimum (Rp)<input id="pMax" type="number" min="0" required placeholder="150000"></label>
+     <label class="full">Deskripsi<textarea id="pDesc" placeholder="Isi produk, plugin, versi FL Studio, sample pendukung..."></textarea></label>
+     <label class="full">Info kompatibilitas<input id="pVersion" placeholder="FL Studio Mobile • versi ..."></label>
+     <label class="full">Cover image<input id="pCover" type="file" accept="image/*"></label>
+     <label class="full">Audio preview<input id="pAudio" type="file" accept="audio/*"></label>
+     <div class="full" id="assetPreview"></div>
+     <div class="admin-actions full"><button class="btn" type="submit" id="productSave">Simpan produk</button><button class="btn secondary" type="button" id="productCancel">Reset form</button></div>
+    </form>
+    <p class="admin-hint">File cover/audio disimpan sebagai data lokal di browser. File besar bisa memenuhi kuota penyimpanan browser; gunakan file preview yang ringan.</p>
+   </section>
+   <section class="admin-box" style="grid-column:1/-1">
+    <h3>3. Daftar katalog</h3>
+    <div id="productAdminList" class="admin-list"></div>
+    <div class="admin-actions"><button class="btn secondary" id="exportData" type="button">Backup JSON</button><label class="btn secondary" style="display:inline-flex;align-items:center;gap:6px">Import JSON<input id="importData" type="file" accept="application/json" style="display:none"></label></div>
+   </section>
+  </div>
+ </div>
+</div>
+<div class="modal-backdrop" id="detailBackdrop" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+ <div class="modal"><div class="modal-top"><div><div class="kicker" id="detailTag">PRODUCT DETAIL</div><h3 id="detailTitle">Product</h3></div><button class="close" id="detailClose" aria-label="Tutup">×</button></div>
+ <p id="detailDesc"></p><div id="detailAssets"></div><p class="meta" id="detailMeta"></p><div class="price" id="detailPrice"></div>
+ <div class="notice" id="detailNotice">Pastikan versi FL Studio dan plugin yang dibutuhkan sesuai sebelum membeli.</div>
+ <div class="modal-actions"><button class="btn" id="detailAdd">Tambah ke keranjang</button><button class="btn secondary" id="detailClose2">Tutup</button></div></div>
+</div>
+<aside class="cart-panel" id="cartPanel" aria-label="Keranjang belanja"><div class="cart-head"><h2>Keranjang</h2><button class="close" id="cartClose">×</button></div><div id="cartItems"></div><div class="notice">Checkout belum aktif pada versi demo. Integrasi backend dan payment gateway diperlukan untuk transaksi sungguhan.</div><button class="btn" style="width:100%;margin-top:16px" id="checkoutBtn">Lanjut checkout (demo)</button></aside>
+<div class="toast" id="toast"></div>
+
+<script>
+let products = [
+ {id:1,name:"One Shot Sample Bijian",platform:"Universal",format:".WAV",category:"Sample Pack",minPrice:10000,maxPrice:20000,icon:"🥁",desc:"Sample one-shot satuan untuk kick, snare, clap, percussion, bass, dan elemen beat lainnya.",version:"Universal • WAV • Harga bergantung jenis dan isi sample"},
+ {id:2,name:"FL Studio Mobile Project ZIP",platform:"Mobile",format:".ZIP / .FLM",category:"Project",genre:"Party",style:"Bongobarbar",minPrice:150000,maxPrice:300000,icon:"📱",desc:"Contoh project FL Studio Mobile. Genre: Party • Style: Bongobarbar. Detail isi, sample pendukung, dan versi aplikasi akan dicantumkan pada tiap produk.",version:"FL Studio Mobile • ZIP / FLM • Periksa sample pendukung"},
+ {id:3,name:"Mixing Preset",platform:"PC",format:"Preset",category:"Preset",minPrice:15000,maxPrice:50000,icon:"🎛️",desc:"Preset untuk membantu proses mixing. Plugin, format, dan kompatibilitas akan dicantumkan pada detail produk.",version:"FL Studio PC • Plugin dan versi wajib dicantumkan"},
+ {id:4,name:"MIDI Pack",platform:"Universal",format:".MID",category:"MIDI",minPrice:25000,maxPrice:50000,icon:"🎼",desc:"File MIDI melody, chord, bassline, atau pattern untuk membantu workflow produksi musik.",version:"Universal • MIDI • Kompatibel dengan DAW yang mendukung MIDI"}
+];
+let genreStyles = {
+ "Party":["Bongobarbar","Njengat","Velocity"],
+ "Trap Battle":["Uwir Uwir Krok Krok","Trap Slow"]
+};
+const STORAGE_KEY="yfs_admin_catalog_v1";
+function loadLocalCatalog(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
+  if(saved&&Array.isArray(saved.products)&&saved.genreStyles){products=saved.products;genreStyles=saved.genreStyles}
+ }catch(e){console.warn("Data lokal tidak bisa dibaca",e)}
+}
+function saveLocalCatalog(){
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify({products,genreStyles}));return true}
+ catch(e){toast("Penyimpanan browser penuh/gagal. Kurangi ukuran file cover/audio.");return false}
+}
+loadLocalCatalog();
+let cart=[];
+let selected=null;
+const escHTML=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rupiah=n=>"Rp"+Number(n||0).toLocaleString("id-ID");
+const priceLabel=x=>x.minPrice===x.maxPrice?rupiah(x.minPrice):rupiah(x.minPrice)+"–"+rupiah(x.maxPrice);
+const grid=document.getElementById("productGrid");
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const p=document.getElementById("platform").value;
+ const c=document.getElementById("category").value;
+ const g=document.getElementById("genre").value;
+ const st=document.getElementById("style").value;
+ const s=document.getElementById("sort").value;
+ let list=products.filter(x=>(p==="all"||x.platform===p)&&(c==="all"||x.category===c)&&(g==="all"||x.genre===g)&&(st==="all"||x.style===st)&&(`${x.name} ${x.desc} ${x.category} ${x.platform} ${x.genre||""} ${x.style||""}`).toLowerCase().includes(q));
+ if(s==="low")list.sort((a,b)=>a.minPrice-b.minPrice); if(s==="high")list.sort((a,b)=>b.maxPrice-a.maxPrice);
+ grid.innerHTML=list.length?list.map(x=>`<article class="card"><div class="cover" ${x.cover&&String(x.cover).startsWith("data:image/")?`style="background-image:url('${x.cover}');background-size:cover;background-position:center"`:""}><span class="tag">${escHTML(x.platform==="Universal"?"UNIVERSAL":"FL STUDIO "+String(x.platform).toUpperCase())}</span>${x.cover?"":`<span class="symbol">${x.icon||"🎵"}</span>`}</div><div class="card-body"><h3>${escHTML(x.name)}</h3><div class="meta">${escHTML(x.category)} · ${escHTML(x.format)}${x.genre?` · ${escHTML(x.genre)} / ${escHTML(x.style)}`:""}</div><p class="desc">${escHTML(x.desc||"")}</p>${x.audio&&String(x.audio).startsWith("data:audio/")?`<audio controls preload="none" style="width:100%;height:30px" src="${x.audio}"></audio>`:""}<div class="card-bottom"><span class="price">${priceLabel(x)}</span><button class="smallbtn" onclick="openDetail(${x.id})">Detail</button></div></div></article>`).join(""):`<div class="empty">Produk tidak ditemukan. Coba kata kunci atau filter lain.</div>`;
+}
+function updateStyleOptions(){
+ const genre=document.getElementById("genre").value;
+ const style=document.getElementById("style");
+ const options=genre==="all"?Object.values(genreStyles).flat():(genreStyles[genre]||[]);
+ style.innerHTML='<option value="all">Semua style</option>'+options.map(v=>`<option value="${v}">${v}</option>`).join("");
+}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2300)}
+function openDetail(id){selected=products.find(x=>x.id===id);document.getElementById("detailTag").textContent=selected.category.toUpperCase()+" • "+selected.platform.toUpperCase();document.getElementById("detailTitle").textContent=selected.name;document.getElementById("detailDesc").textContent=selected.desc;document.getElementById("detailAssets").innerHTML=(selected.cover?`<img class="preview-media" src="${selected.cover}" alt="Cover produk">`:"")+(selected.audio?`<audio controls style="width:100%;margin:8px 0" src="${selected.audio}"></audio>`:"");document.getElementById("detailMeta").textContent=selected.version+" • "+selected.format+(selected.genre?" • Genre: "+selected.genre+" • Style: "+selected.style:"");document.getElementById("detailPrice").textContent=priceLabel(selected);document.getElementById("detailBackdrop").classList.add("show")}
+function closeDetail(){document.getElementById("detailBackdrop").classList.remove("show")}
+function addCart(x){cart.push(x);document.getElementById("cartCount").textContent=cart.length;renderCart();toast("Produk ditambahkan ke keranjang")}
+function renderCart(){const el=document.getElementById("cartItems");if(!cart.length){el.innerHTML='<div class="cart-empty">Keranjang masih kosong.</div>';return}el.innerHTML=cart.map((x,i)=>`<div class="cart-item"><span>${x.name}<br><small style="color:#aaa">${priceLabel(x)}</small></span><button class="smallbtn" onclick="removeCart(${i})">Hapus</button></div>`).join("")+`<div style="display:flex;justify-content:space-between;padding:18px 0;font-weight:800">Total <span>${rupiah(cart.reduce((a,x)=>a+x.minPrice,0))}</span></div>`}
+function removeCart(i){cart.splice(i,1);document.getElementById("cartCount").textContent=cart.length;renderCart()}
+
+const $id=id=>document.getElementById(id);
+let editingGenre=null, coverData="", audioData="";
+function safeText(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function refreshGenreSelects(){
+ const current=$id("pGenre").value;
+ $id("pGenre").innerHTML='<option value="">Tanpa genre</option>'+Object.keys(genreStyles).map(g=>`<option value="${safeText(g)}">${safeText(g)}</option>`).join("");
+ if(genreStyles[current])$id("pGenre").value=current;
+ refreshProductStyle();
+ updateStyleOptions();
+}
+function refreshProductStyle(){
+ const g=$id("pGenre").value, current=$id("pStyle").value, styles=genreStyles[g]||[];
+ $id("pStyle").innerHTML='<option value="">Tanpa style</option>'+styles.map(x=>`<option value="${safeText(x)}">${safeText(x)}</option>`).join("");
+ if(styles.includes(current))$id("pStyle").value=current;
+}
+function renderGenreAdmin(){
+ $id("genreAdminList").innerHTML=Object.entries(genreStyles).map(([g,styles])=>`<div class="admin-row"><span><b>${safeText(g)}</b><br>${styles.map(safeText).join(" • ")||"Belum ada style"}</span><span><button type="button" onclick="editGenre('${encodeURIComponent(g)}')">Edit</button> <button type="button" onclick="deleteGenre('${encodeURIComponent(g)}')">Hapus</button></span></div>`).join("")||'<p class="admin-hint">Belum ada genre.</p>';
+}
+function renderProductAdmin(){
+ $id("productAdminList").innerHTML=products.map(p=>`<div class="admin-row"><span><b>${safeText(p.name)}</b><br>${safeText(p.platform)} · ${safeText(p.category)} · ${safeText(p.genre||"Tanpa genre")} / ${safeText(p.style||"Tanpa style")}<br>${safeText(priceLabel(p))}</span><span><button type="button" onclick="editProduct(${p.id})">Edit</button> <button type="button" onclick="deleteProduct(${p.id})">Hapus</button></span></div>`).join("")||'<p class="admin-hint">Belum ada produk.</p>';
+}
+function resetGenreForm(){editingGenre=null;$id("genreName").value="";$id("genreStylesInput").value="";}
+window.editGenre=encoded=>{const g=decodeURIComponent(encoded);editingGenre=g;$id("genreName").value=g;$id("genreStylesInput").value=(genreStyles[g]||[]).join(", ");};
+window.deleteGenre=encoded=>{const g=decodeURIComponent(encoded);if(!confirm("Hapus genre "+g+"?"))return;delete genreStyles[g];products=products.map(p=>p.genre===g?{...p,genre:"",style:""}:p);saveLocalCatalog();renderAdmin();render();toast("Genre dihapus")};
+function resetProductForm(){ $id("productForm").reset();$id("editProductId").value="";coverData="";audioData="";$id("assetPreview").innerHTML="";$id("productSave").textContent="Simpan produk";refreshProductStyle(); }
+window.editProduct=id=>{const p=products.find(x=>x.id===id);if(!p)return;resetProductForm();$id("editProductId").value=p.id;$id("pName").value=p.name;$id("pPlatform").value=p.platform;$id("pCategory").value=p.category;refreshGenreSelects();$id("pGenre").value=p.genre||"";refreshProductStyle();$id("pStyle").value=p.style||"";$id("pFormat").value=p.format;$id("pMin").value=p.minPrice;$id("pMax").value=p.maxPrice;$id("pDesc").value=p.desc||"";$id("pVersion").value=p.version||"";coverData=p.cover||"";audioData=p.audio||"";$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Cover saat ini">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"");$id("productSave").textContent="Update produk";$id("adminBackdrop").scrollTo({top:0,behavior:"smooth"});};
+window.deleteProduct=id=>{if(!confirm("Hapus produk ini dari katalog?"))return;products=products.filter(p=>p.id!==id);saveLocalCatalog();renderAdmin();render();toast("Produk dihapus")};
+function renderAdmin(){refreshGenreSelects();renderGenreAdmin();renderProductAdmin()}
+$id("adminOpen").onclick=()=>{$id("adminBackdrop").classList.add("show");$id("adminBackdrop").setAttribute("aria-hidden","false");renderAdmin()};
+$id("adminClose").onclick=()=>{$id("adminBackdrop").classList.remove("show");$id("adminBackdrop").setAttribute("aria-hidden","true")};
+$id("adminBackdrop").addEventListener("click",e=>{if(e.target.id==="adminBackdrop")$id("adminClose").click()});
+$id("genreForm").onsubmit=e=>{e.preventDefault();const name=$id("genreName").value.trim();const styles=$id("genreStylesInput").value.split(",").map(x=>x.trim()).filter(Boolean);if(!name)return;if(editingGenre&&editingGenre!==name){delete genreStyles[editingGenre];products=products.map(p=>p.genre===editingGenre?{...p,genre:name}:p)}genreStyles[name]=[...new Set(styles)];saveLocalCatalog();resetGenreForm();renderAdmin();render();toast("Genre dan style disimpan")};
+$id("genreCancel").onclick=resetGenreForm;
+$id("pGenre").onchange=refreshProductStyle;
+async function fileAsData(file){if(!file)return "";return await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)})}
+$id("pCover").onchange=async e=>{coverData=await fileAsData(e.target.files[0]);$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Preview cover">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"")};
+$id("pAudio").onchange=async e=>{audioData=await fileAsData(e.target.files[0]);$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Preview cover">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"")};
+$id("productForm").onsubmit=async e=>{e.preventDefault();const min=Number($id("pMin").value),max=Number($id("pMax").value);if(max<min){toast("Harga maksimum tidak boleh lebih kecil dari minimum.");return}const oldId=$id("editProductId").value;const old=products.find(p=>p.id===Number(oldId));const g=$id("pGenre").value,style=$id("pStyle").value;const p={id:old?old.id:Math.max(0,...products.map(x=>x.id))+1,name:$id("pName").value.trim(),platform:$id("pPlatform").value,category:$id("pCategory").value,genre:g,style,format:$id("pFormat").value.trim(),minPrice:min,maxPrice:max,desc:$id("pDesc").value.trim(),version:$id("pVersion").value.trim(),icon:old?.icon||"🎵",cover:coverData||old?.cover||"",audio:audioData||old?.audio||""};if(old)products=products.map(x=>x.id===old.id?p:x);else products.push(p);if(saveLocalCatalog()){render();renderAdmin();resetProductForm();toast(old?"Produk diperbarui":"Produk ditambahkan")}};
+$id("productCancel").onclick=resetProductForm;
+$id("exportData").onclick=()=>{const blob=new Blob([JSON.stringify({products,genreStyles},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="yfs-catalog-backup.json";a.click();URL.revokeObjectURL(a.href)};
+$id("importData").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.products)||!d.genreStyles||typeof d.genreStyles!=="object")throw Error("Format backup tidak cocok");products=d.products;genreStyles=d.genreStyles;if(saveLocalCatalog()){render();renderAdmin();toast("Backup berhasil diimpor")}}catch(err){toast("File backup tidak valid")};e.target.value=""};
+
+["search","platform","category","style","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="search"?"input":"change",render));
+document.getElementById("genre").addEventListener("change",()=>{updateStyleOptions();render()});
+updateStyleOptions();
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById("platform").value=b.dataset.platform;render()}));
+document.querySelectorAll(".cat").forEach(b=>b.addEventListener("click",()=>{document.getElementById("category").value=b.dataset.cat;render()}));
+document.getElementById("detailAdd").onclick=()=>{if(selected)addCart(selected);closeDetail()};
+document.getElementById("detailClose").onclick=closeDetail;document.getElementById("detailClose2").onclick=closeDetail;
+document.getElementById("detailBackdrop").addEventListener("click",e=>{if(e.target.id==="detailBackdrop")closeDetail()});
+document.getElementById("cartOpen").onclick=()=>document.getElementById("cartPanel").classList.add("open");
+document.getElementById("cartClose").onclick=()=>document.getElementById("cartPanel").classList.remove("open");
+document.getElementById("checkoutBtn").onclick=()=>toast("Checkout demo belum terhubung ke pembayaran.");
+document.getElementById("year").textContent=new Date().getFullYear();
+render();renderCart();
+</script>
+</body>
+</html>
