@@ -118,6 +118,15 @@ footer{border-top:1px solid #2b2733;padding:30px 0 42px;color:var(--muted);font-
 
 
 <script type="module">
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import {
   getAuth,
@@ -137,10 +146,21 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 window.yfsAuth = { auth, provider, signInWithPopup, signOut, onAuthStateChanged };
+window.yfsDB = {
+  db,
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc
+};
+window.dispatchEvent(new Event("yfsFirebaseReady"));
 </script>
 
 
@@ -256,6 +276,9 @@ window.yfsAuth = { auth, provider, signInWithPopup, signOut, onAuthStateChanged 
 <div class="toast" id="toast"></div>
 
 <script>
+window.yfsFirebaseReady = new Promise(resolve => {
+  window.addEventListener("yfsFirebaseReady", resolve, { once: true });
+});
 let products = [
  {id:1,name:"One Shot Sample Bijian",platform:"Universal",format:".WAV",category:"Sample Pack",minPrice:10000,maxPrice:20000,icon:"🥁",desc:"Sample one-shot satuan untuk kick, snare, clap, percussion, bass, dan elemen beat lainnya.",version:"Universal • WAV • Harga bergantung jenis dan isi sample"},
  {id:2,name:"FL Studio Mobile Project ZIP",platform:"Mobile",format:".ZIP / .FLM",category:"Project",genre:"Party",style:"Bongobarbar",minPrice:150000,maxPrice:300000,icon:"📱",desc:"Contoh project FL Studio Mobile. Genre: Party • Style: Bongobarbar. Detail isi, sample pendukung, dan versi aplikasi akan dicantumkan pada tiap produk.",version:"FL Studio Mobile • ZIP / FLM • Periksa sample pendukung"},
@@ -278,6 +301,18 @@ function saveLocalCatalog(){
  catch(e){toast("Penyimpanan browser penuh/gagal. Kurangi ukuran file cover/audio.");return false}
 }
 loadLocalCatalog();
+window.yfsFirebaseReady.then(async()=>{
+  try{
+    const api=window.yfsDB;
+    const snap=await api.getDocs(
+      api.collection(api.db,"products")
+    );
+    toast("Firestore terhubung! Data ditemukan: "+snap.size);
+  }catch(error){
+    console.error(error);
+    toast("Firestore gagal: "+error.code);
+  }
+});
 let cart=[];
 let selected=null;
 const escHTML=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
