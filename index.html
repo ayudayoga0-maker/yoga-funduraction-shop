@@ -1,433 +1,57 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101014">
-<title>Yoga Funduraction Shop — Digital Music Store</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0d14">
+<title>YF SHOP — Digital Music Store</title>
 <style>
-:root{--bg:#101014;--panel:#191820;--panel2:#211d2b;--line:#302b3a;--purple:#965cf4;--purple2:#b58aff;--text:#f6f3fb;--muted:#aaa4b5;--green:#70d6a1}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
-header{position:sticky;top:0;z-index:20;background:#101014ed;backdrop-filter:blur(14px);border-bottom:1px solid #292532}
-.nav{height:72px;display:flex;align-items:center;gap:24px}
-.brand{font-weight:900;letter-spacing:.04em;font-size:19px;white-space:nowrap}
-.brand span{color:var(--purple2)}
-.navlinks{display:flex;gap:22px;margin-left:auto;color:#c7c1d0;font-size:13px}
-.navlinks a:hover{color:white}
-.navright{display:flex;gap:10px;align-items:center}
-.iconbtn,.menu-btn{border:1px solid var(--line);background:var(--panel);color:white;border-radius:12px;padding:10px 12px}
-.menu-btn{display:none}
-.cart-count{display:inline-grid;place-items:center;background:var(--purple);border-radius:99px;min-width:19px;height:19px;font-size:11px;margin-left:4px}
-.hero{padding:66px 0 44px}
-.hero-box{position:relative;overflow:hidden;border:1px solid #3b304c;border-radius:26px;padding:clamp(28px,6vw,66px);background:radial-gradient(circle at 83% 30%,#56358a77,transparent 34%),linear-gradient(120deg,#20192b,#15131c 60%,#21172d)}
-.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--purple2);font-weight:800;text-transform:uppercase}
-h1{font-size:clamp(38px,7vw,70px);line-height:1.02;letter-spacing:-.055em;margin:16px 0;max-width:700px}
-.hero p{max-width:560px;color:#c2bbce;font-size:16px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:750;background:var(--purple);color:white;box-shadow:0 8px 24px #965cf433}
-.btn:hover{filter:brightness(1.1)}
-.btn.secondary{background:#ffffff0b;border:1px solid #ffffff26;box-shadow:none}
-.hero-note{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px;color:#c5bdce;font-size:12px}
-.hero-note span:before{content:"✓";color:var(--green);font-weight:900;margin-right:7px}
-.section{padding:26px 0 48px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}
-.kicker{color:var(--purple2);font-size:11px;letter-spacing:.16em;font-weight:800;text-transform:uppercase}
-h2{font-size:clamp(24px,4vw,34px);margin:5px 0 0;letter-spacing:-.03em}
-.sub{color:var(--muted);font-size:13px;margin:5px 0 0}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 22px}
-.search{flex:1;min-width:190px;position:relative}
-.search input{width:100%;background:var(--panel);border:1px solid var(--line);color:white;border-radius:12px;padding:12px 14px;outline:none}
-.search input:focus,select:focus{border-color:var(--purple)}
-select{background:var(--panel);border:1px solid var(--line);color:#eee;border-radius:12px;padding:12px;min-width:150px;outline:none}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
-.chip{background:var(--panel);border:1px solid var(--line);color:#c8c1d2;border-radius:99px;padding:8px 13px;font-size:12px}
-.chip.active{background:#382653;border-color:#8753d3;color:white}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.card{background:linear-gradient(180deg,#1c1a23,#17161d);border:1px solid #302c38;border-radius:18px;overflow:hidden;transition:.2s}
-.card:hover{transform:translateY(-3px);border-color:#68469a}
-.cover{height:168px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 70% 30%,#8b55d855,transparent 34%),linear-gradient(135deg,#292039,#15141c)}
-.cover:before,.cover:after{content:"";position:absolute;border:1px solid #b58aff44;border-radius:50%;width:180px;height:180px}
-.cover:after{width:120px;height:120px}
-.cover .symbol{font-size:48px;z-index:1;filter:drop-shadow(0 8px 18px #0008)}
-.tag{position:absolute;top:12px;left:12px;background:#100e16cc;border:1px solid #ffffff20;border-radius:99px;padding:5px 9px;font-size:10px;color:#e8ddfa;z-index:2}
-.card-body{padding:15px}
-.card h3{margin:0 0 5px;font-size:16px}
-.meta{color:var(--muted);font-size:11px}
-.desc{color:#bdb6c8;font-size:12px;min-height:38px;margin:10px 0}
-.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
-.price{font-weight:850;font-size:17px}
-.smallbtn{background:#342348;border:1px solid #68469a;color:white;padding:8px 11px;border-radius:10px;font-size:11px;font-weight:750}
-.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.cat{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px}
-.cat b{display:block;margin:8px 0 3px}
-.cat small{color:var(--muted)}
-.cat .ico{font-size:24px}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.info{padding:20px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}
-.info b{display:block;margin:9px 0 5px}
-.info p{color:var(--muted);font-size:12px;margin:0}
-footer{border-top:1px solid #2b2733;padding:30px 0 42px;color:var(--muted);font-size:12px}
-.footerrow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.modal-backdrop{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:18px;z-index:50}
-.modal-backdrop.show{display:grid}
-.modal{width:min(520px,100%);background:#1a1821;border:1px solid #494052;border-radius:20px;padding:22px;box-shadow:0 25px 80px #0009}
-.modal-top{display:flex;justify-content:space-between;gap:15px}
-.modal h3{font-size:23px;margin:4px 0}
-.close{background:transparent;border:0;color:white;font-size:24px}
-.modal p{color:#c1bacb;font-size:13px}
-.modal .price{font-size:22px}
-.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#292333;border:1px solid #7551a2;color:white;padding:11px 16px;border-radius:12px;z-index:80;transition:.25s;font-size:13px}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.cart-panel{position:fixed;right:0;top:0;height:100%;width:min(390px,100%);background:#17151d;border-left:1px solid var(--line);z-index:60;padding:22px;transform:translateX(105%);transition:.25s;overflow:auto}
-.cart-panel.open{transform:translateX(0)}
-.cart-head{display:flex;justify-content:space-between;align-items:center}
-.cart-item{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;font-size:13px}
-.cart-empty{color:var(--muted);font-size:13px;padding:30px 0}
-.notice{background:#241e30;border:1px solid #55406e;padding:13px 15px;border-radius:13px;color:#d5c9e6;font-size:12px;margin-top:18px}
-#adminBackdrop{position:fixed;inset:0;background:#08070bd9;z-index:90;display:none;overflow:auto;padding:18px}
-#adminBackdrop.show{display:block}
-.admin-shell{width:min(1050px,100%);margin:20px auto;background:#17151e;border:1px solid #493b5b;border-radius:20px;padding:22px;box-shadow:0 25px 90px #000b}
-.admin-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
-.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.admin-box{background:#201d28;border:1px solid #393141;border-radius:15px;padding:16px;min-width:0}
-.admin-box h3{margin:0 0 12px;font-size:16px}
-.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.admin-form label{display:grid;gap:5px;color:#c9c1d2;font-size:12px}
-.admin-form label.full{grid-column:1/-1}
-.admin-form input,.admin-form select,.admin-form textarea{width:100%;min-width:0;background:#121117;border:1px solid #403749;color:#fff;border-radius:9px;padding:10px;font:inherit}
-.admin-form textarea{min-height:72px;resize:vertical}
-.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.admin-list{display:grid;gap:8px;margin-top:12px;max-height:250px;overflow:auto}
-.admin-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px;background:#15131b;border:1px solid #342e3d;border-radius:10px;font-size:12px}
-.admin-row span{min-width:0;overflow-wrap:anywhere}
-.admin-row button{background:#342348;border:1px solid #68469a;color:#fff;border-radius:8px;padding:6px 9px;font-size:11px}
-.admin-hint{color:#aaa1b3;font-size:11px;margin:9px 0 0;line-height:1.5}
-.preview-media{max-width:100%;max-height:110px;border-radius:8px;margin-top:8px}
-@media(max-width:800px){.admin-grid{grid-template-columns:1fr}.admin-shell{padding:15px;margin:0 auto}}
-@media(max-width:520px){#adminBackdrop{padding:8px}.admin-form{grid-template-columns:1fr}.admin-form label.full{grid-column:auto}.admin-head h2{font-size:21px}.navright{gap:5px}.iconbtn{padding:8px 9px;font-size:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.categories{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.menu-btn{display:block}.nav{gap:10px}.navright{margin-left:auto}}
-@media(max-width:520px){.wrap{width:min(100% - 26px,1160px)}.nav{height:62px}.brand{font-size:16px}.hero{padding:28px 0 25px}.hero-box{border-radius:19px;padding:28px 22px}.hero p{font-size:14px}.grid{grid-template-columns:1fr 1fr;gap:10px}.cover{height:118px}.cover .symbol{font-size:36px}.card-body{padding:11px}.card h3{font-size:13px}.desc{font-size:11px;min-height:48px}.price{font-size:14px}.smallbtn{padding:7px 8px;font-size:10px}.section{padding:20px 0 34px}.categories{gap:9px}.cat{padding:14px}.info-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}select{flex:1;min-width:130px}}
+:root{--bg:#0b0d14;--panel:#131722;--panel2:#191f2d;--line:#293247;--text:#f5f7ff;--muted:#9ba6bc;--accent:#9b75ff;--accent2:#c3aaff;--good:#51d6a2;--danger:#ff7185;--warn:#ffc66e;--radius:18px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#32245a55,transparent 38%),var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:20;background:#0b0d14eF;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:72px;display:flex;align-items:center;gap:24px}.brand{font-weight:950;letter-spacing:.04em;font-size:19px}.brand b{color:var(--accent2)}.links{display:flex;gap:22px;margin-left:auto;color:#c4ccdc;font-size:13px}.right{display:flex;align-items:center;gap:9px}.btn{border:1px solid transparent;background:linear-gradient(135deg,#9169fa,#7044d2);color:#fff;border-radius:12px;padding:11px 16px;font-weight:800;box-shadow:0 8px 26px #8d62ed2b}.btn:hover{filter:brightness(1.1)}.btn.ghost{background:#ffffff08;border-color:var(--line);box-shadow:none}.btn.danger{background:#3a1d2a;border-color:#713247;box-shadow:none}.btn:disabled{opacity:.45;cursor:not-allowed}.count{display:inline-grid;place-items:center;background:#fff;color:#211632;border-radius:99px;min-width:19px;height:19px;font-size:11px;margin-left:5px}.hero{padding:54px 0 34px}.hero-card{padding:clamp(28px,6vw,64px);border:1px solid #4b3b70;border-radius:28px;background:radial-gradient(circle at 83% 22%,#a179ff44,transparent 32%),linear-gradient(120deg,#211b34,#141722 65%,#1d1930);position:relative;overflow:hidden}.eyebrow,.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.17em;font-weight:850;color:var(--accent2)}h1{font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:-.055em;margin:17px 0;max-width:760px}h1 span{color:#c4a7ff}.hero p{max-width:590px;color:#c4cada;font-size:16px}.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:25px}.trust{display:flex;gap:18px;flex-wrap:wrap;color:#c1c9d9;font-size:12px;margin-top:28px}.trust span:before{content:'✓';color:var(--good);font-weight:900;margin-right:7px}.section{padding:27px 0 42px}.head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:18px}.head h2{font-size:clamp(24px,4vw,34px);margin:4px 0;letter-spacing:-.035em}.muted{color:var(--muted)}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}.toolbar input,.toolbar select,.field input,.field select,.field textarea{background:#111622;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px 12px;outline:none;min-width:0}.toolbar input{flex:1;min-width:190px}.toolbar select{min-width:145px}.toolbar input:focus,.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:linear-gradient(180deg,#171d2a,#111620);transition:.2s}.card:hover{transform:translateY(-3px);border-color:#7456b4}.cover{height:160px;display:grid;place-items:center;background:radial-gradient(circle at 70% 25%,#a27cff55,transparent 35%),linear-gradient(135deg,#28213d,#151a26);position:relative;background-size:cover;background-position:center}.cover .symbol{font-size:46px}.tag{position:absolute;top:11px;left:11px;background:#080a10c9;border:1px solid #ffffff24;padding:5px 9px;border-radius:99px;font-size:10px}.body{padding:15px}.body h3{margin:0 0 5px;font-size:16px}.meta{font-size:11px;color:var(--muted)}.desc{font-size:12px;color:#bbc4d5;min-height:38px;margin:10px 0}.bottom{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-top:13px}.price{font-size:17px;font-weight:900}.mini{background:#29213c;border:1px solid #59447f;color:#fff;border-radius:10px;padding:8px 11px;font-size:11px;font-weight:800}.empty{grid-column:1/-1;padding:34px;text-align:center;border:1px dashed var(--line);border-radius:16px;color:var(--muted)}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.benefit{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:18px}.benefit b{display:block;margin:8px 0 4px}.benefit p{font-size:12px;color:var(--muted);margin:0}footer{border-top:1px solid var(--line);padding:27px 0 40px;color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.overlay{display:none;position:fixed;inset:0;background:#05060bdc;z-index:50;padding:15px;overflow:auto}.overlay.show{display:grid;place-items:center}.modal{width:min(560px,100%);background:#141a27;border:1px solid #3a4560;border-radius:20px;padding:21px;box-shadow:0 25px 90px #000a}.modal.wide{width:min(1040px,100%)}.modalhead{display:flex;justify-content:space-between;gap:12px;align-items:center}.modalhead h2{margin:0}.close{border:0;background:transparent;color:#fff;font-size:26px}.field{display:grid;gap:6px;margin:10px 0;color:#c5cee0;font-size:12px}.field input,.field select,.field textarea{width:100%}.field textarea{min-height:76px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}.adminlayout{display:grid;grid-template-columns:220px 1fr;gap:15px;margin-top:18px}.side{background:#101521;border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;align-content:start;gap:7px}.side button{text-align:left;background:transparent;border:1px solid transparent;color:#c6cee0;padding:10px;border-radius:9px}.side button.active,.side button:hover{background:#29213d;border-color:#57417f;color:white}.pane{border:1px solid var(--line);background:#101521;border-radius:14px;padding:16px;min-width:0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#1a2130;border:1px solid var(--line);padding:13px;border-radius:12px}.stat small{display:block;color:var(--muted)}.stat b{font-size:22px}.rowitem{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px;border:1px solid var(--line);background:#141b29;border-radius:11px;margin-top:8px;font-size:12px}.rowitem>div:first-child{min-width:0;overflow-wrap:anywhere}.rowactions{display:flex;gap:6px;flex-shrink:0}.rowactions button{background:#2b2340;color:#fff;border:1px solid #59447f;border-radius:8px;padding:6px 9px;font-size:11px}.rowactions .del{background:#3b202b;border-color:#71384a}.toast{position:fixed;z-index:100;bottom:18px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#20283a;border:1px solid #596782;border-radius:12px;padding:11px 15px;transition:.2s;font-size:13px;max-width:calc(100% - 28px)}.toast.show{opacity:1;transform:translate(-50%,0)}.cart{position:fixed;z-index:40;right:0;top:0;height:100%;width:min(390px,100%);background:#111722;border-left:1px solid var(--line);padding:20px;transform:translateX(105%);transition:.22s;overflow:auto}.cart.open{transform:none}.cartline{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}.notice{background:#272139;border:1px solid #514071;padding:12px;border-radius:11px;color:#d5c9eb;font-size:12px;margin:12px 0}.hidden{display:none!important}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.adminlayout{grid-template-columns:1fr}.side{grid-template-columns:repeat(3,1fr)}.side button{text-align:center}.links{display:none}}
+@media(max-width:520px){.wrap{width:calc(100% - 24px)}.nav{height:62px;gap:8px}.brand{font-size:15px}.right{margin-left:auto;gap:5px}.right .btn{padding:9px 10px;font-size:11px}.hero{padding:25px 0}.hero-card{padding:26px 20px;border-radius:20px}.hero p{font-size:14px}.grid{gap:9px}.cover{height:112px}.cover .symbol{font-size:34px}.body{padding:10px}.body h3{font-size:13px}.desc{font-size:11px;min-height:52px}.price{font-size:14px}.mini{padding:7px 8px;font-size:10px}.benefits{grid-template-columns:1fr}.head{align-items:start;flex-direction:column}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.stats{grid-template-columns:1fr 1fr}.overlay{padding:7px}.modal{padding:15px}.side{grid-template-columns:repeat(2,1fr)}}
 </style>
-
-
-<script type="module">
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBbZ6nIb6hSmKCCzpLPBijFnSSNhQjo5tA",
-  authDomain: "yoga-funduraction-shop.firebaseapp.com",
-  projectId: "yoga-funduraction-shop",
-  storageBucket: "yoga-funduraction-shop.firebasestorage.app",
-  messagingSenderId: "556357854730",
-  appId: "1:556357854730:web:540c2812d6bce4f960e1f3"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-window.yfsAuth = { auth, provider, signInWithPopup, signOut, onAuthStateChanged };
-window.yfsDB = {
-  db,
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc
-};
-window.dispatchEvent(new Event("yfsFirebaseReady"));
-</script>
-
-
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home">YOGA <span>FUNDURACTION</span></a>
-    <nav class="navlinks"><a href="#home">Home</a><a href="#products">Products</a><a href="#categories">Categories</a><a href="#about">About</a></nav>
-    <div class="navright">
-      <button class="iconbtn" id="adminOpen" aria-label="Buka dashboard admin">Admin</button>
-      <button class="iconbtn" id="cartOpen" aria-label="Buka keranjang">Cart <span class="cart-count" id="cartCount">0</span></button>
-      <button class="menu-btn" onclick="document.querySelector('#products').scrollIntoView()">☰</button>
-    </div>
-  </div>
-</header>
+<header class="top"><div class="wrap nav"><a class="brand" href="#home">YF <b>SHOP</b></a><nav class="links"><a href="#home">Beranda</a><a href="#products">Produk</a><a href="#about">Tentang</a></nav><div class="right"><button class="btn ghost" id="loginBtn">LOGIN</button><button class="btn" id="cartBtn">KERANJANG <span class="count" id="cartCount">0</span></button></div></div></header>
 <main>
-<section class="hero" id="home"><div class="wrap"><div class="hero-box">
-  <div class="eyebrow">Digital music production store</div>
-  <h1>CREATE YOUR<br><span style="color:#bd98ff">OWN SOUND.</span></h1>
-  <p>Temukan project, sample, drum kit, preset, dan tools produksi musik untuk FL Studio PC maupun FL Studio Mobile.</p>
-  <div class="actions"><a class="btn" href="#products">Jelajahi Produk</a><a class="btn secondary" href="#categories">Lihat Kategori</a></div>
-  <div class="hero-note"><span>Produk digital</span><span>PC & Mobile</span><span>Preview sebelum beli</span></div>
-</div></div></section>
-
-<section class="section" id="categories"><div class="wrap">
-  <div class="section-head"><div><div class="kicker">Browse store</div><h2>Jelajahi kategori</h2><p class="sub">Pilih kebutuhan produksi musikmu.</p></div></div>
-  <div class="categories">
-    <a class="cat" href="#products" data-cat="Project"><div class="ico">🎹</div><b>Projects</b><small>FLP & FLM projects</small></a>
-    <a class="cat" href="#products" data-cat="Sample Pack"><div class="ico">🥁</div><b>Sample Packs</b><small>Drums, FX & sounds</small></a>
-    <a class="cat" href="#products" data-cat="Preset"><div class="ico">🎛️</div><b>Presets</b><small>Sounds & instruments</small></a>
-    <a class="cat" href="#products" data-cat="MIDI"><div class="ico">🎼</div><b>MIDI Files</b><small>Melody & chords</small></a>
-  </div>
-</div></section>
-
-<section class="section" id="products"><div class="wrap">
-  <div class="section-head"><div><div class="kicker">The collection</div><h2>Produk pilihan</h2><p class="sub">Cari produk berdasarkan platform, kategori, genre, dan style.</p></div></div>
-  <div class="toolbar">
-    <div class="search"><input id="search" type="search" placeholder="Cari project, sample, preset..." aria-label="Cari produk"></div>
-    <select id="platform" aria-label="Filter platform"><option value="all">Semua platform</option><option value="PC">FL Studio PC</option><option value="Mobile">FL Studio Mobile</option><option value="Universal">Universal</option></select>
-    <select id="category" aria-label="Filter kategori"><option value="all">Semua kategori</option><option>Project</option><option>Sample Pack</option><option>Drum Kit</option><option>Preset</option><option>MIDI</option><option>Sound FX</option></select>
-    <select id="genre" aria-label="Filter genre"><option value="all">Semua genre</option><option value="Party">Party</option><option value="Trap Battle">Trap Battle</option></select>
-    <select id="style" aria-label="Filter style"><option value="all">Semua style</option></select>
-    <select id="sort" aria-label="Urutkan produk"><option value="featured">Pilihan</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option></select>
-  </div>
-  <div class="chips"><button class="chip active" data-platform="all">Semua</button><button class="chip" data-platform="PC">PC</button><button class="chip" data-platform="Mobile">Mobile</button><button class="chip" data-platform="Universal">Universal</button></div>
-  <div class="grid" id="productGrid"></div>
-</div></section>
-
-<section class="section" id="about"><div class="wrap">
-  <div class="section-head"><div><div class="kicker">Why YFS</div><h2>Belanja sound lebih mudah</h2><p class="sub">Informasi produk jelas sebelum kamu membeli.</p></div></div>
-  <div class="info-grid">
-    <div class="info"><div class="ico">🎧</div><b>Preview audio</b><p>Dengarkan contoh suara sebelum memutuskan membeli. Audio demo asli perlu ditambahkan oleh admin.</p></div>
-    <div class="info"><div class="ico">📱</div><b>PC & Mobile</b><p>Setiap produk akan diberi label kompatibilitas dan versi aplikasi yang dibutuhkan.</p></div>
-    <div class="info"><div class="ico">🔒</div><b>Download aman</b><p>Versi produksi akan menggunakan link download privat setelah pembayaran terverifikasi.</p></div>
-  </div>
-  <div class="notice"><b>Mode demo:</b> katalog dan dashboard admin berjalan di browser. Data katalog tersimpan lokal di browser perangkat ini; checkout dan pembayaran belum aktif.</div>
-</div></section>
+<section class="hero" id="home"><div class="wrap"><div class="hero-card"><div class="eyebrow">YOGA FUNDURACTION · DIGITAL MUSIC STORE</div><h1>BUILD YOUR<br><span>SIGNATURE SOUND.</span></h1><p>Temukan sample, project, MIDI, preset, dan tools produksi musik untuk FL Studio PC maupun Mobile. Pilih sound yang cocok dengan karakter musikmu.</p><div class="actions"><a class="btn" href="#products">JELAJAHI PRODUK</a><a class="btn ghost" href="#categories">LIHAT KATEGORI</a></div><div class="trust"><span>Produk digital</span><span>PC & Mobile</span><span>Preview sebelum membeli</span></div></div></div></section>
+<section class="section" id="categories"><div class="wrap"><div class="head"><div><div class="kicker">Browse collection</div><h2>Kategori produk</h2><div class="muted">Pilih kebutuhan produksi musikmu.</div></div></div><div class="benefits"><div class="benefit"><div>🥁</div><b>One Shot & Sample Pack</b><p>WAV, drum hits, FX, loops dan sound pilihan.</p></div><div class="benefit"><div>🎹</div><b>FL Studio Projects</b><p>Project PC dan FL Studio Mobile.</p></div><div class="benefit"><div>🎛️</div><b>MIDI & Presets</b><p>MIDI files, mixer racks dan preset.</p></div></div></div></section>
+<section class="section" id="products"><div class="wrap"><div class="head"><div><div class="kicker">The collection</div><h2>Jelajahi produk</h2><div class="muted">Cari berdasarkan nama, platform, kategori, genre, dan style.</div></div><div class="muted" id="productCount">Memuat katalog…</div></div><div class="toolbar"><input id="search" type="search" placeholder="Cari produk…"><select id="platform"><option value="all">Semua platform</option><option>PC</option><option>Mobile</option><option>Universal</option></select><select id="category"><option value="all">Semua kategori</option><option>One Shot</option><option>Sample Pack</option><option>Project</option><option>MIDI</option><option>Preset</option><option>Mixer Preset Rack</option><option>Sound FX</option></select><select id="genre"><option value="all">Semua genre</option></select><select id="style"><option value="all">Semua style</option></select><select id="sort"><option value="new">Terbaru</option><option value="low">Harga terendah</option><option value="high">Harga tertinggi</option></select></div><div class="grid" id="productGrid"><div class="empty">Menghubungkan katalog…</div></div></div></section>
+<section class="section" id="about"><div class="wrap"><div class="head"><div><div class="kicker">Why YF SHOP</div><h2>Belanja sound lebih terarah</h2></div></div><div class="benefits"><div class="benefit"><b>🎧 Preview audio</b><p>Dengarkan demo sebelum memilih produk.</p></div><div class="benefit"><b>📱 Kompatibilitas jelas</b><p>Informasi platform, format, dan versi aplikasi.</p></div><div class="benefit"><b>🤝 Bantuan admin</b><p>Hubungi pengelola untuk pertanyaan produk dan pesanan.</p></div></div></div></section>
 </main>
-<footer><div class="wrap footerrow"><div><b style="color:white">YOGA FUNDURACTION SHOP</b><br>Digital tools for music producers.</div><div>© <span id="year"></span> Yoga Funduraction Shop. All rights reserved.</div></div></footer>
-
-<div id="adminBackdrop" aria-hidden="true">
- <div class="admin-shell">
-  <div class="admin-head"><div><div class="kicker">STORE CONTROL</div><h2>Dashboard Admin</h2><p class="sub">Kelola genre, style, dan katalog produk.</p></div><button class="close" id="adminClose" aria-label="Tutup dashboard">×</button></div>
-  <div class="notice"><b>Mode lokal:</b> data disimpan di browser perangkat ini menggunakan localStorage. Ini bukan database online, belum ada login/admin authentication, dan data tidak otomatis tersinkron ke perangkat lain. Backup JSON secara berkala.</div>
-  <div class="admin-grid" style="margin-top:16px">
-   <section class="admin-box">
-    <h3>1. Genre & Style</h3>
-    <form id="genreForm" class="admin-form">
-     <label class="full">Nama genre<input id="genreName" required placeholder="Contoh: Party"></label>
-     <label class="full">Styles (pisahkan dengan koma)<input id="genreStylesInput" placeholder="Bongobarbar, Njengat, Velocity"></label>
-     <div class="admin-actions full"><button class="btn" type="submit">Simpan genre</button><button class="btn secondary" type="button" id="genreCancel">Reset</button></div>
-    </form>
-    <div id="genreAdminList" class="admin-list"></div>
-    <p class="admin-hint">Edit untuk mengubah nama genre dan daftar style. Hapus genre akan mengosongkan genre/style pada produk yang menggunakannya.</p>
-   </section>
-   <section class="admin-box">
-    <h3>2. Tambah / Edit Project & Produk</h3>
-    <form id="productForm" class="admin-form">
-     <input type="hidden" id="editProductId">
-     <label class="full">Nama produk<input id="pName" required placeholder="Nama project / produk"></label>
-     <label>Platform<select id="pPlatform"><option value="PC">FL Studio PC</option><option value="Mobile">FL Studio Mobile</option><option value="Universal">Universal</option></select></label>
-     <label>Kategori<select id="pCategory"><option>Project</option><option>Sample Pack</option><option>Drum Kit</option><option>Preset</option><option>MIDI</option><option>Sound FX</option></select></label>
-     <label>Genre<select id="pGenre"><option value="">Tanpa genre</option></select></label>
-     <label>Style<select id="pStyle"><option value="">Tanpa style</option></select></label>
-     <label>Format file<input id="pFormat" required placeholder=".FLP / .FLM / .ZIP / .WAV"></label>
-     <label>Harga minimum (Rp)<input id="pMin" type="number" min="0" required placeholder="150000"></label>
-     <label>Harga maksimum (Rp)<input id="pMax" type="number" min="0" required placeholder="150000"></label>
-     <label class="full">Deskripsi<textarea id="pDesc" placeholder="Isi produk, plugin, versi FL Studio, sample pendukung..."></textarea></label>
-     <label class="full">Info kompatibilitas<input id="pVersion" placeholder="FL Studio Mobile • versi ..."></label>
-     <label class="full">Cover image<input id="pCover" type="file" accept="image/*"></label>
-     <label class="full">Audio preview<input id="pAudio" type="file" accept="audio/*"></label>
-     <div class="full" id="assetPreview"></div>
-     <div class="admin-actions full"><button class="btn" type="submit" id="productSave">Simpan produk</button><button class="btn secondary" type="button" id="productCancel">Reset form</button></div>
-    </form>
-    <p class="admin-hint">File cover/audio disimpan sebagai data lokal di browser. File besar bisa memenuhi kuota penyimpanan browser; gunakan file preview yang ringan.</p>
-   </section>
-   <section class="admin-box" style="grid-column:1/-1">
-    <h3>3. Daftar katalog</h3>
-    <div id="productAdminList" class="admin-list"></div>
-    <div class="admin-actions"><button class="btn secondary" id="exportData" type="button">Backup JSON</button><label class="btn secondary" style="display:inline-flex;align-items:center;gap:6px">Import JSON<input id="importData" type="file" accept="application/json" style="display:none"></label></div>
-   </section>
-  </div>
- </div>
-</div>
-<div class="modal-backdrop" id="detailBackdrop" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
- <div class="modal"><div class="modal-top"><div><div class="kicker" id="detailTag">PRODUCT DETAIL</div><h3 id="detailTitle">Product</h3></div><button class="close" id="detailClose" aria-label="Tutup">×</button></div>
- <p id="detailDesc"></p><div id="detailAssets"></div><p class="meta" id="detailMeta"></p><div class="price" id="detailPrice"></div>
- <div class="notice" id="detailNotice">Pastikan versi FL Studio dan plugin yang dibutuhkan sesuai sebelum membeli.</div>
- <div class="modal-actions"><button class="btn" id="detailAdd">Tambah ke keranjang</button><button class="btn secondary" id="detailClose2">Tutup</button></div></div>
-</div>
-<aside class="cart-panel" id="cartPanel" aria-label="Keranjang belanja"><div class="cart-head"><h2>Keranjang</h2><button class="close" id="cartClose">×</button></div><div id="cartItems"></div><div class="notice">Checkout belum aktif pada versi demo. Integrasi backend dan payment gateway diperlukan untuk transaksi sungguhan.</div><button class="btn" style="width:100%;margin-top:16px" id="checkoutBtn">Lanjut checkout (demo)</button></aside>
+<footer><div class="wrap foot"><div><b style="color:#fff">YOGA FUNDURACTION SHOP</b><br>Digital tools for music producers.</div><div>© <span id="year"></span> YF SHOP. All rights reserved.</div></div></footer>
+<div class="overlay" id="detailOverlay"><div class="modal"><div class="modalhead"><div><div class="kicker">PRODUCT DETAIL</div><h2 id="detailName">Produk</h2></div><button class="close" data-close="detailOverlay">×</button></div><p id="detailDesc" class="muted"></p><div id="detailAudio"></div><div class="muted" id="detailMeta"></div><h2 id="detailPrice"></h2><button class="btn" id="addSelected">Tambah ke keranjang</button></div></div>
+<aside class="cart" id="cartPanel"><div class="modalhead"><h2>Keranjang</h2><button class="close" id="cartClose">×</button></div><div id="cartItems"></div><div class="notice">Checkout dan penguncian download belum diaktifkan pada versi ini. Kita aktifkan setelah backend pesanan dan pembayaran disiapkan dengan aman.</div><button class="btn" style="width:100%" id="checkoutBtn" disabled>Checkout belum tersedia</button></aside>
+<div class="overlay" id="adminOverlay"><div class="modal wide"><div class="modalhead"><div><div class="kicker">YF SHOP CONTROL CENTER</div><h2>Dashboard pemilik</h2><div class="muted" id="adminIdentity"></div></div><button class="close" id="adminClose">×</button></div><div class="adminlayout"><nav class="side"><button class="active" data-tab="overview">Ringkasan</button><button data-tab="products">Kelola produk</button><button data-tab="settings">Panduan & konfigurasi</button></nav><div class="pane"><section id="tab-overview"><div class="stats"><div class="stat"><small>Total produk</small><b id="statProducts">0</b></div><div class="stat"><small>Genre</small><b id="statGenres">0</b></div><div class="stat"><small>Status</small><b style="color:var(--good)">Online</b></div></div><div class="notice">Akun admin terverifikasi. Perubahan katalog disimpan ke Cloud Firestore agar terlihat di perangkat pembeli.</div></section><section id="tab-products" class="hidden"><h3 id="formTitle">Tambah produk baru</h3><form id="productForm"><input type="hidden" id="editId"><div class="formgrid"><label class="field">Nama produk<input id="pName" required maxlength="100" placeholder="Contoh: Kick One Shot 01"></label><label class="field">Kategori<select id="pCategory"><option>One Shot</option><option>Sample Pack</option><option>Project</option><option>MIDI</option><option>Preset</option><option>Mixer Preset Rack</option><option>Sound FX</option></select></label><label class="field">Platform<select id="pPlatform"><option>PC</option><option>Mobile</option><option>Universal</option></select></label><label class="field">Format file<input id="pFormat" required placeholder="WAV / ZIP / FLP / FLM / FST / MID"></label><label class="field">Genre<input id="pGenre" placeholder="Party / Trap Battle"></label><label class="field">Style<input id="pStyle" placeholder="Bongobarbar / Velocity"></label><label class="field">Harga (Rp)<input id="pPrice" type="number" min="0" step="1" required placeholder="10000"></label><label class="field">Ikon produk<input id="pIcon" maxlength="4" placeholder="🎵"></label><label class="field full">Deskripsi<textarea id="pDesc" placeholder="Jelaskan isi, plugin, versi, dan kompatibilitas produk."></textarea></label><label class="field full">URL cover image<input id="pCover" type="url" placeholder="https://..."></label><label class="field full">URL audio preview<input id="pAudio" type="url" placeholder="https://..."></label><label class="field full">Link file Google Drive<input id="pDrive" type="url" placeholder="https://drive.google.com/file/d/..."></label></div><div class="notice">Gunakan link Drive hanya untuk file yang memang siap dibagikan. Link Drive biasa dapat diteruskan orang lain; ini bukan sistem download privat.</div><div class="actions"><button class="btn" id="saveProduct" type="submit">Simpan produk</button><button class="btn ghost" id="resetProduct" type="button">Bersihkan</button></div></form><h3 style="margin-top:25px">Daftar katalog</h3><div id="adminProductList"></div></section><section id="tab-settings" class="hidden"><h3>Konfigurasi & batas sistem</h3><p class="muted">Email admin: <b>ayudayoga0@gmail.com</b></p><p class="muted">Firebase Authentication dan Firestore digunakan untuk login dan katalog. File produk disimpan di Google Drive.</p><div class="notice">Checkout, konfirmasi pembayaran, refund, dan live chat belum diaktifkan. Fitur tersebut membutuhkan struktur pesanan dan aturan backend terpisah. Jangan menganggap tombol atau status HTML sebagai bukti pembayaran yang aman.</div><p class="muted">Jangan masukkan password, private key, atau service-account key ke file HTML.</p></section></div></div><div class="actions" style="justify-content:flex-end"><button class="btn ghost" id="logoutBtn">Keluar</button></div></div></div>
 <div class="toast" id="toast"></div>
-
-<script>
-window.yfsFirebaseReady = new Promise(resolve => {
-  window.addEventListener("yfsFirebaseReady", resolve, { once: true });
-});
-let products = [
- {id:1,name:"One Shot Sample Bijian",platform:"Universal",format:".WAV",category:"Sample Pack",minPrice:10000,maxPrice:20000,icon:"🥁",desc:"Sample one-shot satuan untuk kick, snare, clap, percussion, bass, dan elemen beat lainnya.",version:"Universal • WAV • Harga bergantung jenis dan isi sample"},
- {id:2,name:"FL Studio Mobile Project ZIP",platform:"Mobile",format:".ZIP / .FLM",category:"Project",genre:"Party",style:"Bongobarbar",minPrice:150000,maxPrice:300000,icon:"📱",desc:"Contoh project FL Studio Mobile. Genre: Party • Style: Bongobarbar. Detail isi, sample pendukung, dan versi aplikasi akan dicantumkan pada tiap produk.",version:"FL Studio Mobile • ZIP / FLM • Periksa sample pendukung"},
- {id:3,name:"Mixing Preset",platform:"PC",format:"Preset",category:"Preset",minPrice:15000,maxPrice:50000,icon:"🎛️",desc:"Preset untuk membantu proses mixing. Plugin, format, dan kompatibilitas akan dicantumkan pada detail produk.",version:"FL Studio PC • Plugin dan versi wajib dicantumkan"},
- {id:4,name:"MIDI Pack",platform:"Universal",format:".MID",category:"MIDI",minPrice:25000,maxPrice:50000,icon:"🎼",desc:"File MIDI melody, chord, bassline, atau pattern untuk membantu workflow produksi musik.",version:"Universal • MIDI • Kompatibel dengan DAW yang mendukung MIDI"}
-];
-let genreStyles = {
- "Party":["Bongobarbar","Njengat","Velocity"],
- "Trap Battle":["Uwir Uwir Krok Krok","Trap Slow"]
-};
-const STORAGE_KEY="yfs_admin_catalog_v1";
-function loadLocalCatalog(){
- try{
-  const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
-  if(saved&&Array.isArray(saved.products)&&saved.genreStyles){products=saved.products;genreStyles=saved.genreStyles}
- }catch(e){console.warn("Data lokal tidak bisa dibaca",e)}
-}
-function saveLocalCatalog(){
- try{localStorage.setItem(STORAGE_KEY,JSON.stringify({products,genreStyles}));return true}
- catch(e){toast("Penyimpanan browser penuh/gagal. Kurangi ukuran file cover/audio.");return false}
-}
-loadLocalCatalog();
-window.yfsFirebaseReady.then(async()=>{
-  try{
-    const api=window.yfsDB;
-    const snap=await api.getDocs(
-      api.collection(api.db,"products")
-    );
-    toast("Firestore terhubung! Data ditemukan: "+snap.size);
-  }catch(error){
-    console.error(error);
-    toast("Firestore gagal: "+error.code);
-  }
-});
-let cart=[];
-let selected=null;
-const escHTML=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const rupiah=n=>"Rp"+Number(n||0).toLocaleString("id-ID");
-const priceLabel=x=>x.minPrice===x.maxPrice?rupiah(x.minPrice):rupiah(x.minPrice)+"–"+rupiah(x.maxPrice);
-const grid=document.getElementById("productGrid");
-function render(){
- const q=document.getElementById("search").value.toLowerCase();
- const p=document.getElementById("platform").value;
- const c=document.getElementById("category").value;
- const g=document.getElementById("genre").value;
- const st=document.getElementById("style").value;
- const s=document.getElementById("sort").value;
- let list=products.filter(x=>(p==="all"||x.platform===p)&&(c==="all"||x.category===c)&&(g==="all"||x.genre===g)&&(st==="all"||x.style===st)&&(`${x.name} ${x.desc} ${x.category} ${x.platform} ${x.genre||""} ${x.style||""}`).toLowerCase().includes(q));
- if(s==="low")list.sort((a,b)=>a.minPrice-b.minPrice); if(s==="high")list.sort((a,b)=>b.maxPrice-a.maxPrice);
- grid.innerHTML=list.length?list.map(x=>`<article class="card"><div class="cover" ${x.cover&&String(x.cover).startsWith("data:image/")?`style="background-image:url('${x.cover}');background-size:cover;background-position:center"`:""}><span class="tag">${escHTML(x.platform==="Universal"?"UNIVERSAL":"FL STUDIO "+String(x.platform).toUpperCase())}</span>${x.cover?"":`<span class="symbol">${x.icon||"🎵"}</span>`}</div><div class="card-body"><h3>${escHTML(x.name)}</h3><div class="meta">${escHTML(x.category)} · ${escHTML(x.format)}${x.genre?` · ${escHTML(x.genre)} / ${escHTML(x.style)}`:""}</div><p class="desc">${escHTML(x.desc||"")}</p>${x.audio&&String(x.audio).startsWith("data:audio/")?`<audio controls preload="none" style="width:100%;height:30px" src="${x.audio}"></audio>`:""}<div class="card-bottom"><span class="price">${priceLabel(x)}</span><button class="smallbtn" onclick="openDetail(${x.id})">Detail</button></div></div></article>`).join(""):`<div class="empty">Produk tidak ditemukan. Coba kata kunci atau filter lain.</div>`;
-}
-function updateStyleOptions(){
- const genre=document.getElementById("genre").value;
- const style=document.getElementById("style");
- const options=genre==="all"?Object.values(genreStyles).flat():(genreStyles[genre]||[]);
- style.innerHTML='<option value="all">Semua style</option>'+options.map(v=>`<option value="${v}">${v}</option>`).join("");
-}
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2300)}
-function openDetail(id){selected=products.find(x=>x.id===id);document.getElementById("detailTag").textContent=selected.category.toUpperCase()+" • "+selected.platform.toUpperCase();document.getElementById("detailTitle").textContent=selected.name;document.getElementById("detailDesc").textContent=selected.desc;document.getElementById("detailAssets").innerHTML=(selected.cover?`<img class="preview-media" src="${selected.cover}" alt="Cover produk">`:"")+(selected.audio?`<audio controls style="width:100%;margin:8px 0" src="${selected.audio}"></audio>`:"");document.getElementById("detailMeta").textContent=selected.version+" • "+selected.format+(selected.genre?" • Genre: "+selected.genre+" • Style: "+selected.style:"");document.getElementById("detailPrice").textContent=priceLabel(selected);document.getElementById("detailBackdrop").classList.add("show")}
-function closeDetail(){document.getElementById("detailBackdrop").classList.remove("show")}
-function addCart(x){cart.push(x);document.getElementById("cartCount").textContent=cart.length;renderCart();toast("Produk ditambahkan ke keranjang")}
-function renderCart(){const el=document.getElementById("cartItems");if(!cart.length){el.innerHTML='<div class="cart-empty">Keranjang masih kosong.</div>';return}el.innerHTML=cart.map((x,i)=>`<div class="cart-item"><span>${x.name}<br><small style="color:#aaa">${priceLabel(x)}</small></span><button class="smallbtn" onclick="removeCart(${i})">Hapus</button></div>`).join("")+`<div style="display:flex;justify-content:space-between;padding:18px 0;font-weight:800">Total <span>${rupiah(cart.reduce((a,x)=>a+x.minPrice,0))}</span></div>`}
-function removeCart(i){cart.splice(i,1);document.getElementById("cartCount").textContent=cart.length;renderCart()}
-
-const $id=id=>document.getElementById(id);
-let editingGenre=null, coverData="", audioData="";
-function safeText(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function refreshGenreSelects(){
- const current=$id("pGenre").value;
- $id("pGenre").innerHTML='<option value="">Tanpa genre</option>'+Object.keys(genreStyles).map(g=>`<option value="${safeText(g)}">${safeText(g)}</option>`).join("");
- if(genreStyles[current])$id("pGenre").value=current;
- refreshProductStyle();
- updateStyleOptions();
-}
-function refreshProductStyle(){
- const g=$id("pGenre").value, current=$id("pStyle").value, styles=genreStyles[g]||[];
- $id("pStyle").innerHTML='<option value="">Tanpa style</option>'+styles.map(x=>`<option value="${safeText(x)}">${safeText(x)}</option>`).join("");
- if(styles.includes(current))$id("pStyle").value=current;
-}
-function renderGenreAdmin(){
- $id("genreAdminList").innerHTML=Object.entries(genreStyles).map(([g,styles])=>`<div class="admin-row"><span><b>${safeText(g)}</b><br>${styles.map(safeText).join(" • ")||"Belum ada style"}</span><span><button type="button" onclick="editGenre('${encodeURIComponent(g)}')">Edit</button> <button type="button" onclick="deleteGenre('${encodeURIComponent(g)}')">Hapus</button></span></div>`).join("")||'<p class="admin-hint">Belum ada genre.</p>';
-}
-function renderProductAdmin(){
- $id("productAdminList").innerHTML=products.map(p=>`<div class="admin-row"><span><b>${safeText(p.name)}</b><br>${safeText(p.platform)} · ${safeText(p.category)} · ${safeText(p.genre||"Tanpa genre")} / ${safeText(p.style||"Tanpa style")}<br>${safeText(priceLabel(p))}</span><span><button type="button" onclick="editProduct(${p.id})">Edit</button> <button type="button" onclick="deleteProduct(${p.id})">Hapus</button></span></div>`).join("")||'<p class="admin-hint">Belum ada produk.</p>';
-}
-function resetGenreForm(){editingGenre=null;$id("genreName").value="";$id("genreStylesInput").value="";}
-window.editGenre=encoded=>{const g=decodeURIComponent(encoded);editingGenre=g;$id("genreName").value=g;$id("genreStylesInput").value=(genreStyles[g]||[]).join(", ");};
-window.deleteGenre=encoded=>{const g=decodeURIComponent(encoded);if(!confirm("Hapus genre "+g+"?"))return;delete genreStyles[g];products=products.map(p=>p.genre===g?{...p,genre:"",style:""}:p);saveLocalCatalog();renderAdmin();render();toast("Genre dihapus")};
-function resetProductForm(){ $id("productForm").reset();$id("editProductId").value="";coverData="";audioData="";$id("assetPreview").innerHTML="";$id("productSave").textContent="Simpan produk";refreshProductStyle(); }
-window.editProduct=id=>{const p=products.find(x=>x.id===id);if(!p)return;resetProductForm();$id("editProductId").value=p.id;$id("pName").value=p.name;$id("pPlatform").value=p.platform;$id("pCategory").value=p.category;refreshGenreSelects();$id("pGenre").value=p.genre||"";refreshProductStyle();$id("pStyle").value=p.style||"";$id("pFormat").value=p.format;$id("pMin").value=p.minPrice;$id("pMax").value=p.maxPrice;$id("pDesc").value=p.desc||"";$id("pVersion").value=p.version||"";coverData=p.cover||"";audioData=p.audio||"";$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Cover saat ini">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"");$id("productSave").textContent="Update produk";$id("adminBackdrop").scrollTo({top:0,behavior:"smooth"});};
-window.deleteProduct=id=>{if(!confirm("Hapus produk ini dari katalog?"))return;products=products.filter(p=>p.id!==id);saveLocalCatalog();renderAdmin();render();toast("Produk dihapus")};
-function renderAdmin(){refreshGenreSelects();renderGenreAdmin();renderProductAdmin()}
-
-$id("adminOpen").onclick=async()=>{
- try{
-  const api=window.yfsAuth;
-  if(!api){
-   toast("Firebase belum siap. Coba refresh halaman.");
-   return;
-  }
-
-  let user=api.auth.currentUser;
-  if(!user){
-   const result=await api.signInWithPopup(api.auth,api.provider);
-   user=result.user;
-  }
-
-  if((user.email||"").toLowerCase()!=="ayudadayoga0@gmail.com"){
-   await api.signOut(api.auth);
-   toast("Akses ditolak. Akun ini bukan admin YF SHOP.");
-   return;
-  }
-
-  $id("adminBackdrop").classList.add("show");
-  $id("adminBackdrop").setAttribute("aria-hidden","false");
-  renderAdmin();
-
- }catch(error){
-  console.error(error);
-  toast("Login gagal: "+(error.code||error.message));
- }
-};
-
-$id("adminClose").onclick=()=>{$id("adminBackdrop").classList.remove("show");$id("adminBackdrop").setAttribute("aria-hidden","true")};
-$id("adminBackdrop").addEventListener("click",e=>{if(e.target.id==="adminBackdrop")$id("adminClose").click()});
-$id("genreForm").onsubmit=e=>{e.preventDefault();const name=$id("genreName").value.trim();const styles=$id("genreStylesInput").value.split(",").map(x=>x.trim()).filter(Boolean);if(!name)return;if(editingGenre&&editingGenre!==name){delete genreStyles[editingGenre];products=products.map(p=>p.genre===editingGenre?{...p,genre:name}:p)}genreStyles[name]=[...new Set(styles)];saveLocalCatalog();resetGenreForm();renderAdmin();render();toast("Genre dan style disimpan")};
-$id("genreCancel").onclick=resetGenreForm;
-$id("pGenre").onchange=refreshProductStyle;
-async function fileAsData(file){if(!file)return "";return await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)})}
-$id("pCover").onchange=async e=>{coverData=await fileAsData(e.target.files[0]);$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Preview cover">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"")};
-$id("pAudio").onchange=async e=>{audioData=await fileAsData(e.target.files[0]);$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Preview cover">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"")};
-$id("productForm").onsubmit=async e=>{e.preventDefault();const min=Number($id("pMin").value),max=Number($id("pMax").value);if(max<min){toast("Harga maksimum tidak boleh lebih kecil dari minimum.");return}const oldId=$id("editProductId").value;const old=products.find(p=>p.id===Number(oldId));const g=$id("pGenre").value,style=$id("pStyle").value;const p={id:old?old.id:Math.max(0,...products.map(x=>x.id))+1,name:$id("pName").value.trim(),platform:$id("pPlatform").value,category:$id("pCategory").value,genre:g,style,format:$id("pFormat").value.trim(),minPrice:min,maxPrice:max,desc:$id("pDesc").value.trim(),version:$id("pVersion").value.trim(),icon:old?.icon||"🎵",cover:coverData||old?.cover||"",audio:audioData||old?.audio||""};if(old)products=products.map(x=>x.id===old.id?p:x);else products.push(p);if(saveLocalCatalog()){render();renderAdmin();resetProductForm();toast(old?"Produk diperbarui":"Produk ditambahkan")}};
-$id("productCancel").onclick=resetProductForm;
-$id("exportData").onclick=()=>{const blob=new Blob([JSON.stringify({products,genreStyles},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="yfs-catalog-backup.json";a.click();URL.revokeObjectURL(a.href)};
-$id("importData").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!Array.isArray(d.products)||!d.genreStyles||typeof d.genreStyles!=="object")throw Error("Format backup tidak cocok");products=d.products;genreStyles=d.genreStyles;if(saveLocalCatalog()){render();renderAdmin();toast("Backup berhasil diimpor")}}catch(err){toast("File backup tidak valid")};e.target.value=""};
-
-["search","platform","category","style","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="search"?"input":"change",render));
-document.getElementById("genre").addEventListener("change",()=>{updateStyleOptions();render()});
-updateStyleOptions();
-document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById("platform").value=b.dataset.platform;render()}));
-document.querySelectorAll(".cat").forEach(b=>b.addEventListener("click",()=>{document.getElementById("category").value=b.dataset.cat;render()}));
-document.getElementById("detailAdd").onclick=()=>{if(selected)addCart(selected);closeDetail()};
-document.getElementById("detailClose").onclick=closeDetail;document.getElementById("detailClose2").onclick=closeDetail;
-document.getElementById("detailBackdrop").addEventListener("click",e=>{if(e.target.id==="detailBackdrop")closeDetail()});
-document.getElementById("cartOpen").onclick=()=>document.getElementById("cartPanel").classList.add("open");
-document.getElementById("cartClose").onclick=()=>document.getElementById("cartPanel").classList.remove("open");
-document.getElementById("checkoutBtn").onclick=()=>toast("Checkout demo belum terhubung ke pembayaran.");
-document.getElementById("year").textContent=new Date().getFullYear();
-render();renderCart();
+<script type="module">
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
+import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
+import {getFirestore,collection,addDoc,doc,updateDoc,deleteDoc,onSnapshot,serverTimestamp} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
+const firebaseConfig={apiKey:'AIzaSyBbZ6nIb6hSmKCCzpLPBijFnSSNhQjo5t',authDomain:'yoga-funduraction-shop.firebaseapp.com',projectId:'yoga-funduraction-shop',storageBucket:'yoga-funduraction-shop.firebasestorage.app',messagingSenderId:'556357854730',appId:'1:556357854730:web:540c2812d6bce4f960e1f3'};
+const ADMIN_EMAIL='ayudayoga0@gmail.com';
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});
+const $=id=>document.getElementById(id);let user=null,isAdmin=false,products=[],cart=[],selected=null,editing=null;
+const money=n=>'Rp'+Number(n||0).toLocaleString('id-ID');const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2800)}
+function setOverlay(id,on){$(id).classList.toggle('show',on)}
+function renderFilters(){const genres=[...new Set(products.map(p=>p.genre).filter(Boolean))].sort();const old=$('genre').value;$('genre').innerHTML='<option value="all">Semua genre</option>'+genres.map(g=>`<option>${esc(g)}</option>`).join('');if(genres.includes(old))$('genre').value=old;updateStyles()}
+function updateStyles(){const g=$('genre').value,old=$('style').value,styles=[...new Set(products.filter(p=>g==='all'||p.genre===g).map(p=>p.style).filter(Boolean))].sort();$('style').innerHTML='<option value="all">Semua style</option>'+styles.map(s=>`<option>${esc(s)}</option>`).join('');if(styles.includes(old))$('style').value=old}
+function renderProducts(){const q=$('search').value.toLowerCase(),pl=$('platform').value,cat=$('category').value,g=$('genre').value,st=$('style').value;let list=products.filter(p=>(pl==='all'||p.platform===pl)&&(cat==='all'||p.category===cat)&&(g==='all'||p.genre===g)&&(st==='all'||p.style===st)&&(`${p.name} ${p.desc||''} ${p.genre||''} ${p.style||''}`).toLowerCase().includes(q));if($('sort').value==='low')list.sort((a,b)=>a.price-b.price);if($('sort').value==='high')list.sort((a,b)=>b.price-a.price);$('productCount').textContent=`${list.length} produk`; $('productGrid').innerHTML=list.length?list.map(p=>`<article class="card"><div class="cover" ${p.cover?`style="background-image:url('${esc(p.cover)}')"`:''}><span class="tag">${esc(p.platform)} · ${esc(p.category)}</span>${!p.cover?`<span class="symbol">${esc(p.icon||'🎵')}</span>`:''}</div><div class="body"><h3>${esc(p.name)}</h3><div class="meta">${esc(p.format||'Digital product')}${p.genre?' · '+esc(p.genre):''}${p.style?' / '+esc(p.style):''}</div><p class="desc">${esc(p.desc||'Produk digital YF SHOP.')}</p><div class="bottom"><span class="price">${money(p.price)}</span><button class="mini" data-detail="${p.id}">DETAIL</button></div></div></article>`).join(''):'<div class="empty">Belum ada produk yang cocok. Coba ubah filter pencarian.</div>';document.querySelectorAll('[data-detail]').forEach(b=>b.onclick=()=>openDetail(b.dataset.detail))}
+function openDetail(id){selected=products.find(p=>p.id===id);if(!selected)return;$('detailName').textContent=selected.name;$('detailDesc').textContent=selected.desc||'';$('detailMeta').textContent=[selected.platform,selected.category,selected.format,selected.genre,selected.style].filter(Boolean).join(' · ');$('detailPrice').textContent=money(selected.price);$('detailAudio').innerHTML=selected.audio?`<audio controls preload="none" style="width:100%;margin:8px 0" src="${esc(selected.audio)}"></audio>`:'';setOverlay('detailOverlay',true)}
+function renderCart(){$('cartCount').textContent=cart.length;$('cartItems').innerHTML=cart.length?cart.map((p,i)=>`<div class="cartline"><span>${esc(p.name)}<br><small class="muted">${money(p.price)}</small></span><button class="mini" data-remove="${i}">Hapus</button></div>`).join('')+`<h3 style="display:flex;justify-content:space-between">Total <span>${money(cart.reduce((s,p)=>s+p.price,0))}</span></h3>`:'<p class="muted">Keranjang masih kosong.</p>';document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cart.splice(Number(b.dataset.remove),1);renderCart()})}
+function renderAdminList(){$('adminProductList').innerHTML=products.length?products.map(p=>`<div class="rowitem"><div><b>${esc(p.name)}</b><br><span class="muted">${esc(p.category)} · ${esc(p.platform)} · ${money(p.price)}</span></div><div class="rowactions"><button data-edit="${p.id}">Edit</button><button class="del" data-delete="${p.id}">Hapus</button></div></div>`).join(''):'<p class="muted">Belum ada produk.</p>';document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editProduct(b.dataset.edit));document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>removeProduct(b.dataset.delete))}
+function resetForm(){editing=null;$('productForm').reset();$('editId').value='';$('formTitle').textContent='Tambah produk baru';$('saveProduct').textContent='Simpan produk'}
+function editProduct(id){const p=products.find(x=>x.id===id);if(!p)return;editing=id;$('editId').value=id;$('pName').value=p.name||'';$('pCategory').value=p.category||'One Shot';$('pPlatform').value=p.platform||'Universal';$('pFormat').value=p.format||'';$('pGenre').value=p.genre||'';$('pStyle').value=p.style||'';$('pPrice').value=p.price??0;$('pIcon').value=p.icon||'';$('pDesc').value=p.desc||'';$('pCover').value=p.cover||'';$('pAudio').value=p.audio||'';$('pDrive').value=p.driveUrl||'';$('formTitle').textContent='Edit produk';$('saveProduct').textContent='Simpan perubahan';window.scrollTo({top:0,behavior:'smooth'})}
+async function removeProduct(id){if(!confirm('Hapus produk ini dari katalog?'))return;try{await deleteDoc(doc(db,'products',id));toast('Produk dihapus')}catch(e){console.error(e);toast('Gagal menghapus: '+e.code)}}
+$('productForm').onsubmit=async e=>{e.preventDefault();if(!isAdmin)return toast('Akses admin diperlukan');const price=Number($('pPrice').value);if(!Number.isSafeInteger(price)||price<0)return toast('Harga tidak valid');const data={name:$('pName').value.trim(),category:$('pCategory').value,platform:$('pPlatform').value,format:$('pFormat').value.trim(),genre:$('pGenre').value.trim(),style:$('pStyle').value.trim(),price,icon:$('pIcon').value.trim()||'🎵',desc:$('pDesc').value.trim(),cover:$('pCover').value.trim(),audio:$('pAudio').value.trim(),driveUrl:$('pDrive').value.trim(),updatedAt:serverTimestamp()};try{if(editing)await updateDoc(doc(db,'products',editing),data);else await addDoc(collection(db,'products'),{...data,createdAt:serverTimestamp()});resetForm();toast('Produk berhasil disimpan ke Firestore')}catch(err){console.error(err);toast('Gagal menyimpan: '+err.code+' — cek Firestore Rules')}};
+$('resetProduct').onclick=resetForm;
+$('loginBtn').onclick=async()=>{try{if(user){if(isAdmin){setOverlay('adminOverlay',true);return}toast('Login sebagai '+(user.email||'pembeli'));return}const result=await signInWithPopup(auth,provider);if((result.user.email||'').toLowerCase()===ADMIN_EMAIL){$('adminIdentity').textContent=result.user.email;setOverlay('adminOverlay',true)}else{toast('Login berhasil. Akun pembeli aktif.')}}catch(e){console.error(e);toast('Login gagal: '+e.code)}};
+$('logoutBtn').onclick=async()=>{await signOut(auth);setOverlay('adminOverlay',false);toast('Berhasil keluar')};$('adminClose').onclick=()=>setOverlay('adminOverlay',false);
+onAuthStateChanged(auth,u=>{user=u;isAdmin=!!u&&(u.email||'').toLowerCase()===ADMIN_EMAIL;$('loginBtn').textContent=u?(isAdmin?'DASHBOARD':'AKUN SAYA'):'LOGIN';if(isAdmin){$('adminIdentity').textContent=u.email;$('statProducts').textContent=products.length;$('statGenres').textContent=new Set(products.map(p=>p.genre).filter(Boolean)).size}else if(u){$('loginBtn').title=u.email}});
+$('cartBtn').onclick=()=>$('cartPanel').classList.add('open');$('cartClose').onclick=()=>$('cartPanel').classList.remove('open');$('addSelected').onclick=()=>{if(selected){cart.push(selected);renderCart();setOverlay('detailOverlay',false);toast('Ditambahkan ke keranjang')}};
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>setOverlay(b.dataset.close,false));$('checkoutBtn').onclick=()=>toast('Checkout akan diaktifkan setelah backend pesanan aman disiapkan.');
+document.querySelectorAll('.side button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.side button').forEach(x=>x.classList.remove('active'));b.classList.add('active');['overview','products','settings'].forEach(t=>$('tab-'+t).classList.toggle('hidden',t!==b.dataset.tab));if(b.dataset.tab==='products')renderAdminList()});
+['search','platform','category','sort'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',renderProducts));$('genre').onchange=()=>{updateStyles();renderProducts()};$('style').onchange=renderProducts;
+$('year').textContent=new Date().getFullYear();
+onSnapshot(collection(db,'products'),snap=>{products=snap.docs.map(d=>{const v=d.data();return {id:d.id,...v,price:Number(v.price??v.minPrice??0)}});renderFilters();renderProducts();if(isAdmin){$('statProducts').textContent=products.length;$('statGenres').textContent=new Set(products.map(p=>p.genre).filter(Boolean)).size;renderAdminList()}},err=>{console.error(err);$('productGrid').innerHTML='<div class="empty">Katalog gagal dimuat. Periksa koneksi dan Firestore Rules.</div>';toast('Firestore: '+err.code)});
 </script>
-</body>
-</html>
+</body></html>
