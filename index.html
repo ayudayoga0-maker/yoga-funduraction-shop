@@ -336,7 +336,37 @@ function resetProductForm(){ $id("productForm").reset();$id("editProductId").val
 window.editProduct=id=>{const p=products.find(x=>x.id===id);if(!p)return;resetProductForm();$id("editProductId").value=p.id;$id("pName").value=p.name;$id("pPlatform").value=p.platform;$id("pCategory").value=p.category;refreshGenreSelects();$id("pGenre").value=p.genre||"";refreshProductStyle();$id("pStyle").value=p.style||"";$id("pFormat").value=p.format;$id("pMin").value=p.minPrice;$id("pMax").value=p.maxPrice;$id("pDesc").value=p.desc||"";$id("pVersion").value=p.version||"";coverData=p.cover||"";audioData=p.audio||"";$id("assetPreview").innerHTML=(coverData?`<img class="preview-media" src="${coverData}" alt="Cover saat ini">`:"")+(audioData?`<audio class="preview-media" controls src="${audioData}"></audio>`:"");$id("productSave").textContent="Update produk";$id("adminBackdrop").scrollTo({top:0,behavior:"smooth"});};
 window.deleteProduct=id=>{if(!confirm("Hapus produk ini dari katalog?"))return;products=products.filter(p=>p.id!==id);saveLocalCatalog();renderAdmin();render();toast("Produk dihapus")};
 function renderAdmin(){refreshGenreSelects();renderGenreAdmin();renderProductAdmin()}
-$id("adminOpen").onclick=()=>{$id("adminBackdrop").classList.add("show");$id("adminBackdrop").setAttribute("aria-hidden","false");renderAdmin()};
+
+$id("adminOpen").onclick=async()=>{
+ try{
+  const api=window.yfsAuth;
+  if(!api){
+   toast("Firebase belum siap. Coba refresh halaman.");
+   return;
+  }
+
+  let user=api.auth.currentUser;
+  if(!user){
+   const result=await api.signInWithPopup(api.auth,api.provider);
+   user=result.user;
+  }
+
+  if((user.email||"").toLowerCase()!=="ayudadayoga0@gmail.com"){
+   await api.signOut(api.auth);
+   toast("Akses ditolak. Akun ini bukan admin YF SHOP.");
+   return;
+  }
+
+  $id("adminBackdrop").classList.add("show");
+  $id("adminBackdrop").setAttribute("aria-hidden","false");
+  renderAdmin();
+
+ }catch(error){
+  console.error(error);
+  toast("Login gagal: "+(error.code||error.message));
+ }
+};
+
 $id("adminClose").onclick=()=>{$id("adminBackdrop").classList.remove("show");$id("adminBackdrop").setAttribute("aria-hidden","true")};
 $id("adminBackdrop").addEventListener("click",e=>{if(e.target.id==="adminBackdrop")$id("adminClose").click()});
 $id("genreForm").onsubmit=e=>{e.preventDefault();const name=$id("genreName").value.trim();const styles=$id("genreStylesInput").value.split(",").map(x=>x.trim()).filter(Boolean);if(!name)return;if(editingGenre&&editingGenre!==name){delete genreStyles[editingGenre];products=products.map(p=>p.genre===editingGenre?{...p,genre:name}:p)}genreStyles[name]=[...new Set(styles)];saveLocalCatalog();resetGenreForm();renderAdmin();render();toast("Genre dan style disimpan")};
