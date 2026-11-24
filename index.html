@@ -26,7 +26,7 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js';
 import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js';
 import {getFirestore,collection,addDoc,doc,updateDoc,deleteDoc,onSnapshot,serverTimestamp} from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js';
-const firebaseConfig={apiKey:'AIzaSyBbZ6nIb6hSmKCCzpLPBijFnSSNhQjo5t',authDomain:'yoga-funduraction-shop.firebaseapp.com',projectId:'yoga-funduraction-shop',storageBucket:'yoga-funduraction-shop.firebasestorage.app',messagingSenderId:'556357854730',appId:'1:556357854730:web:540c2812d6bce4f960e1f3'};
+const firebaseConfig={apiKey:'AIzaSyBbZ6nIb6hSmKCCzpLPBijFnSSNhQjo5tA',authDomain:'yoga-funduraction-shop.firebaseapp.com',projectId:'yoga-funduraction-shop',storageBucket:'yoga-funduraction-shop.firebasestorage.app',messagingSenderId:'556357854730',appId:'1:556357854730:web:540c2812d6bce4f960e1f3'};
 const ADMIN_EMAIL='ayudayoga0@gmail.com';
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),provider=new GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});
 const $=id=>document.getElementById(id);let user=null,isAdmin=false,products=[],cart=[],selected=null,editing=null;
